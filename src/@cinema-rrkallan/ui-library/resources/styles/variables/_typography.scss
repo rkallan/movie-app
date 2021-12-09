@@ -1,0 +1,250 @@
+@import "../mixins/mixins";
+@import "colors";
+@import "gap";
+@import "transition";
+
+$fontFamilyBase: Raleway, sans-serif;
+$fontFamilyHeading: Redressed, cursive;
+$fontSizeDefault: (
+    px: 16px,
+    "%": 100%,
+    rem: 1rem,
+);
+
+$font: (
+    default: (
+        font-family: $fontFamilyBase,
+        font-size: map-get($fontSizeDefault, "%"),
+        line-height: calc(1em + 0.5rem),
+        font-weight: 400,
+        color: safe-hsla(map-get($colorBlack, default)),
+    ),
+    link: (
+        position: relative,
+        font-size: inherit,
+        line-height: inherit,
+        font-weight: bolder,
+        color: safe-hsla(map-get($colorRed, default)),
+        text-decoration: none,
+        background-color: transparent,
+        cursor: pointer,
+        "-webkit-text-decoration-skip": objects,
+        _hover: (
+            outline: 0,
+            text-decoration: none,
+        ),
+        _hoverAfter: (
+            width: 0,
+        ),
+        _after: (
+            position: absolute,
+            left: 0,
+            bottom: -0.125rem,
+            content: " ",
+            width: 100%,
+            height: 0.01625rem,
+            background-color: safe-hsla(map-get($colorRed, default)),
+            transition: map-get($transition, default),
+        ),
+    ),
+    heading: (
+        _h1: (
+            font-family: $fontFamilyHeading,
+            font-size: 2rem,
+            line-height: 1.5,
+            font-weight: 900,
+            overflow-wrap: break-word,
+            margin: 0,
+            color: safe-hsla(map-get($colorRed, default)),
+        ),
+        _h2: (
+            font-family: $fontFamilyHeading,
+            font-size: 1.75rem,
+            line-height: 1.5,
+            font-weight: 700,
+            margin: 0,
+            overflow-wrap: break-word,
+            color: safe-hsla(map-get($colorRed, default)),
+        ),
+        _h3: (
+            font-family: $fontFamilyHeading,
+            font-size: 1.5rem,
+            line-height: 1.5,
+            font-weight: 700,
+            margin: 0,
+            overflow-wrap: break-word,
+            color: safe-hsla(map-get($colorRed, default)),
+        ),
+        _h4: (
+            font-family: $fontFamilyHeading,
+            font-size: 1.25rem,
+            line-height: 1.5,
+            font-weight: 700,
+            margin: 0,
+            overflow-wrap: break-word,
+            color: safe-hsla(map-get($colorRed, default)),
+        ),
+        _h5: (
+            font-family: $fontFamilyHeading,
+            font-size: 1rem,
+            line-height: 1.5,
+            font-weight: 700,
+            margin: 0,
+            overflow-wrap: break-word,
+            color: safe-hsla(map-get($colorRed, default)),
+        ),
+        _h6: (
+            font-family: $fontFamilyHeading,
+            font-size: 1rem,
+            line-height: 1.5,
+            font-weight: 500,
+            margin: 0,
+            overflow-wrap: break-word,
+            color: safe-hsla(map-get($colorRed, default)),
+        ),
+    ),
+    paragraph: (
+        font-size: 1rem,
+        line-height: 1.55,
+        font-weight: 400,
+        color: inherit,
+        margin: 0,
+        overflow-wrap: break-word,
+    ),
+);
+
+$fontFamily: (
+    "raleway-100": (
+        fontFamily: "Raleway",
+        fontWeight: 100,
+        fontStyle: (
+            "normal",
+        ),
+    ),
+    "raleway-100-italic": (
+        fontFamily: "Raleway",
+        fontWeight: 100,
+        fontStyle: (
+            "italic",
+        ),
+    ),
+    "raleway-200": (
+        fontFamily: "Raleway",
+        fontWeight: 200,
+        fontStyle: (
+            "normal",
+        ),
+    ),
+    "raleway-200-italic": (
+        fontFamily: "Raleway",
+        fontWeight: 200,
+        fontStyle: (
+            "italic",
+        ),
+    ),
+    "raleway-300": (
+        fontFamily: "Raleway",
+        fontWeight: 300,
+        fontStyle: (
+            "normal",
+        ),
+    ),
+    "raleway-300-italic": (
+        fontFamily: "Raleway",
+        fontWeight: 300,
+        fontStyle: (
+            "italic",
+        ),
+    ),
+    "raleway-500": (
+        fontFamily: "Raleway",
+        fontWeight: 500,
+        fontStyle: (
+            "normal",
+        ),
+    ),
+    "raleway-500-italic": (
+        fontFamily: "Raleway",
+        fontWeight: 500,
+        fontStyle: (
+            "italic",
+        ),
+    ),
+    "raleway-600": (
+        fontFamily: "Raleway",
+        fontWeight: 600,
+        fontStyle: (
+            "normal",
+        ),
+    ),
+    "raleway-600-italic": (
+        fontFamily: "Raleway",
+        fontWeight: 600,
+        fontStyle: (
+            "italic",
+        ),
+    ),
+    "raleway-700": (
+        fontFamily: "Raleway",
+        fontWeight: 700,
+        fontStyle: (
+            "normal",
+        ),
+    ),
+    "raleway-700-italic": (
+        fontFamily: "Raleway",
+        fontWeight: 700,
+        fontStyle: (
+            "italic",
+        ),
+    ),
+    "raleway-800": (
+        fontFamily: "Raleway",
+        fontWeight: 800,
+        fontStyle: (
+            "normal",
+        ),
+    ),
+    "raleway-800-italic": (
+        fontFamily: "Raleway",
+        fontWeight: 800,
+        fontStyle: (
+            "italic",
+        ),
+    ),
+    "raleway-900": (
+        fontFamily: "Raleway",
+        fontWeight: 900,
+        fontStyle: (
+            "normal",
+        ),
+    ),
+    "raleway-900-italic": (
+        fontFamily: "Raleway",
+        fontWeight: 900,
+        fontStyle: (
+            "italic",
+        ),
+    ),
+    "raleway-regular": (
+        fontFamily: "Raleway",
+        fontWeight: 400,
+        fontStyle: (
+            "normal",
+        ),
+    ),
+    "raleway-italic": (
+        fontFamily: "Raleway",
+        fontWeight: 400,
+        fontStyle: (
+            "italic",
+        ),
+    ),
+    "redressed-regular": (
+        fontFamily: "Redressed",
+        fontWeight: 400,
+        fontStyle: (
+            "normal",
+        ),
+    ),
+);

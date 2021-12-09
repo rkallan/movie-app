@@ -1,0 +1,43 @@
+@import "./src/resources/styles/variables/variables";
+@import "./src/resources/styles/mixins/mixins";
+
+.container {
+    position: sticky;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    top: 0;
+    left: 0;
+    padding: 1rem 2rem;
+    z-index: 10;
+    background-color: safe-hsla(map-get($colorWhite, default));
+    border-bottom: 0.0625rem solid safe-hsla(map-get($colorRed, default));
+    box-shadow: safe-hsla(map-get($colorRed, default), 0.25) 0px 2px 10px;
+
+    .unit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+
+        &[variant~="logo"] {
+            width: 100%;
+            max-width: 2rem;
+            transition: map-get($transition, default);
+
+            @include respond-to("medium") {
+                max-width: 5rem;
+            }
+        }
+
+        &[variant~="menu"] {
+            position: relative;
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            align-self: center;
+            justify-content: flex-end;
+            height: 100%;
+        }
+    }
+}

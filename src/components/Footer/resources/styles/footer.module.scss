@@ -1,0 +1,175 @@
+@import "./src/resources/styles/variables/variables";
+@import "./src/resources/styles/mixins/mixins";
+
+.container {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    bottom: 0;
+    left: 0;
+    padding: 1.5rem 1rem 0.5rem;
+    background-color: safe-hsla(map-get($colorRed, default));
+    z-index: 5;
+    box-shadow: #5d5b5b 0px 2px 10px;
+
+    .unit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &[variant~="legal"] {
+            flex-direction: column-reverse;
+            justify-content: center;
+            gap: 0.25rem;
+
+            @include respond-to("medium") {
+                flex-direction: row;
+            }
+
+            .content {
+                font-size: 0.625rem;
+                line-height: 1;
+                color: safe-hsla(map-get($colorWhite, default));
+            }
+
+            .menu {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+
+                .item {
+                    display: flex;
+                    flex-direction: column;
+
+                    &:first-child {
+                        .link {
+                            .text {
+                                &:before {
+                                    display: none;
+
+                                    @include respond-to("medium") {
+                                        display: block;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .link {
+                        display: flex;
+                        flex-direction: column;
+
+                        .text {
+                            position: relative;
+                            font-size: 0.625rem;
+                            font-weight: normal;
+                            line-height: 1;
+                            color: safe-hsla(map-get($colorWhite, default));
+                            padding: 0 0.5rem;
+
+                            &:before {
+                                position: absolute;
+                                top: 0;
+                                left: 0.01625rem;
+                                content: "";
+                                width: 0.01625rem;
+                                height: 100%;
+                                background-color: safe-hsla(map-get($colorWhite, default), 0.5);
+                            }
+
+                            &:after {
+                                position: absolute;
+                                left: 0.5rem;
+                                bottom: -0.125rem;
+                                content: "";
+                                width: calc(100% - 1rem);
+                                height: 0.01625rem;
+                                background-color: safe-hsla(map-get($colorWhite, default), 0.5);
+                                transition: map-get($transition, default);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .infoContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        @include respond-to("medium") {
+            border: 1px solid safe-hsla(map-get($colorWhite, default), 0.5);
+            border-radius: map-get($borderRadius, small);
+            max-width: 64rem;
+            padding: 1rem 2rem;
+        }
+
+        .infoUnit {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+
+            @include respond-to("medium") {
+                align-items: flex-end;
+                gap: 2rem;
+            }
+
+            .item {
+                .text {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    font-size: 0.75rem;
+                    line-height: 1;
+                    color: safe-hsla(map-get($colorWhite, default));
+
+                    &[variant~="font-title"] {
+                        @include respond-to("medium") {
+                            font-family: $fontFamilyHeading;
+                            font-size: 1rem;
+                            margin-bottom: -0.125rem;
+                            transform: scale(1.25);
+                        }
+                    }
+
+                    .link {
+                        position: relative;
+                        font-weight: normal;
+                        color: inherit;
+
+                        &:hover,
+                        &:focus {
+                            &:after {
+                                width: 0;
+                            }
+                        }
+
+                        &:after {
+                            position: absolute;
+                            left: 0;
+                            bottom: -0.125rem;
+                            content: "";
+                            width: 100%;
+                            height: 0.01625rem;
+                            background-color: safe-hsla(map-get($colorWhite, default), 0.5);
+                            transition: map-get($transition, default);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

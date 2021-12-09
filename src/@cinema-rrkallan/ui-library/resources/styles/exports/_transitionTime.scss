@@ -1,0 +1,8 @@
+@import "../mixins/mixins";
+@import "../variables/variables";
+
+:export {
+    transitionTimeSlow: map-get($transitionTime, slow);
+    transitionTimeDefault: map-get($transitionTime, default);
+    transitionTimeFast: map-get($transitionTime, fast);
+}

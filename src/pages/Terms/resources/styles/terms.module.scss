@@ -1,0 +1,27 @@
+@import "./src/resources/styles/variables/variables";
+@import "./src/resources/styles/mixins/mixins";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 4rem;
+
+    .unit {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        gap: 1rem;
+        width: 100%;
+        max-width: 62rem;
+        padding: 2rem;
+        border: 1px solid safe-hsla(map-get($colorBlack, default), 0.25);
+        border-radius: map-get($borderRadius, small);
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+@import "../mixins//mixins";
+@import "variables";
+
+:export {
+    color: {
+        white: safe-hsla(map-get($colorWhite, default));
+        black: safe-hsla(map-get($colorBlack, default));
+        gray: safe-hsla(map-get($colorGray, default));
+        error: safe-hsla(map-get($colorRed, default));
+    }
+    transitiontime: {
+        slow: map-get($transitionTime, slow);
+        default: map-get($transitionTime, default);
+        fast: map-get($transitionTime, fast);
+    }
+}

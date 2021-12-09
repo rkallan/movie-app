@@ -1,0 +1,146 @@
+@import "./src/resources/styles/mixins/mixins";
+@import "./src/resources/styles/variables/variables";
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    .label {
+        position: absolute;
+        left: 0.75rem;
+        top: 0;
+        z-index: 5;
+        transition: map-get($transition, default);
+        max-width: calc(100% - (#{map-get($gap, small)} + #{map-get($gap, extraSmall)}) * 2.5);
+
+        &[variant~="placeholder"] {
+            font-size: 1rem;
+            transform: translate(0, 18px);
+        }
+
+        &[variant~="legend"] {
+            font-size: 0.75rem;
+            font-weight: bolder;
+            transform: translate(0, 0);
+        }
+
+        &[variant~="focussed"] {
+            color: safe-hsla(map-get($colorRed, default));
+            cursor: pointer;
+
+            .title {
+                pointer-events: none;
+            }
+        }
+
+        .title {
+            font-size: inherit;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: pre;
+        }
+    }
+
+    .fieldset {
+        position: relative;
+        inset: 0;
+        margin: 0;
+        padding: 0 0 0.5rem 0;
+        border: 0.0625rem solid safe-hsla(map-get($colorBlack, lighter), 0.5);
+        overflow: hidden;
+        min-width: 0;
+        border-radius: map-get($borderRadius, small);
+        transition: map-get($transition, default);
+
+        &[variant~="read-only"] {
+            background-color: safe-hsla(map-get($colorWhite, darken));
+        }
+
+        &[variant~="disabled"] {
+            background-color: safe-hsla(map-get($colorGray, extraLighter), map-get($opacity, disabled));
+        }
+
+        &[state~="isFocussed"] {
+            border-color: safe-hsla(map-get($colorBlack, default));
+        }
+
+        &[state~="inValid"] {
+            border-color: safe-hsla(map-get($colorRed, default));
+        }
+
+        .title {
+            font-size: 0.75rem;
+            font-weight: bolder;
+            width: auto;
+            margin: 0 map-get($gap, small);
+            padding: 0 map-get($gap, extraSmall);
+            opacity: 0;
+            max-width: calc(100% - (#{map-get($gap, small)} + #{map-get($gap, extraSmall)}) * 2);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: pre;
+            transition: map-get($transition, default);
+
+            &[variant~="placeholder"] {
+                max-width: 0;
+                margin: 0;
+                padding: 0;
+            }
+
+            &[variant~="legend"] {
+                max-width: calc(100% - (#{map-get($gap, small)} + #{map-get($gap, extraSmall)}) * 2);
+            }
+        }
+
+        .inputContainer {
+            display: flex;
+            flex-direction: column;
+            padding: 0.25rem 0.75rem 0;
+
+            .input {
+                border: 0;
+                margin: 0;
+                padding: 0;
+                background: transparent;
+
+                &::-webkit-inner-spin-button,
+                &::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+
+                &:focus {
+                    outline: none;
+                }
+
+                &:disabled {
+                    user-select: none;
+                }
+            }
+        }
+    }
+
+    .helperText {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 0 0.72rem;
+        overflow: hidden;
+
+        .text {
+            display: inline-block;
+            color: safe-hsla(map-get($colorRed, default));
+            margin-top: 0;
+            opacity: 1;
+            visibility: visible;
+            transition: map-get($transition, default);
+
+            &[state~="hidden"] {
+                margin-top: -1.25rem;
+                opacity: 0;
+            }
+        }
+    }
+}

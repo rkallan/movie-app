@@ -1,0 +1,76 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# misc & ide config
+*~
+.DS_Store*
+.Spotlight-V100
+.Trashes
+.idea
+.vscode
+.~lock.*
+.buildpath
+.idea
+.project
+.settings
+*.iml
+*.ipr
+composer.lock
+nbproject
+Thumbs.db
+**/.git
+Desktop.ini
+$RECYCLE.BIN/
+id_ci
+
+# dependencies
+**/node_modules
+.pnp*
+
+# build & coverage files
+**/build
+**/dist
+**/lib
+**/coverage
+**/*.css
+
+# husky
+**/.husky/_
+
+# compiled files
+**/*.com
+**/*.class
+**/*.dll
+**/*.exe
+**/*.o
+**/*.so
+
+# minified, map & packed compressed files
+**/*.min.*
+**/*.map
+**/*.7z
+**/*.dmg
+**/*.gz
+**/*.iso
+**/*.jar
+**/*.rar
+**/*.tar
+**/*.zip
+
+# log & database files
+*-debug.log*
+*-error.log*
+**/log
+**/*.log
+**/*.sql
+**/*.sqlite
+ehthumbs.db
+
+# dev specific env
+.env*local
+.eslintcache
+
+# local ssl cert
+*.pem
+
+# others
+._*

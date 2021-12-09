@@ -1,0 +1,11 @@
+**/node_modules
+
+**/build
+**/images
+**/fonts
+
+**/.gitignore
+**/.husky
+**/.*
+**/*.sh
+**/docker

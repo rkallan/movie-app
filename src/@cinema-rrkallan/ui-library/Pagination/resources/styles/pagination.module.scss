@@ -1,0 +1,83 @@
+@import "./src/resources/styles/variables/variables";
+@import "./src/resources/styles/mixins/mixins";
+
+.container {
+    position: relative;
+
+    .navigation {
+        margin: 0.5rem 0 1rem 0;
+        padding: 0 0.5rem;
+
+        .unit {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: row;
+
+            .button {
+                min-width: 2rem;
+                min-height: 2rem;
+                font-weight: 700;
+                color: safe-hsla(map-get($colorBlue, default));
+                padding: 0;
+                margin: 0;
+                border: 0.0625rem solid transparent;
+                background: transparent;
+                transition: map-get($transition, default);
+
+                &:disabled {
+                    color: safe-hsla(map-get($colorGray, lighter));
+                    cursor: default;
+                }
+
+                &[variant~="text"] {
+                    padding: 0 0.75rem;
+
+                    &:hover:not([disabled]),
+                    &:focus:not([disabled]) {
+                        color: safe-hsla(map-get($colorBlue, darken));
+                    }
+                }
+
+                &[variant~="number"] {
+                    margin-left: -0.0625rem;
+                    border: 0.0625rem solid safe-hsla(map-get($colorGray, extraLighter));
+
+                    &:hover:not([disabled]),
+                    &:focus:not([disabled]) {
+                        background: safe-hsla(map-get($colorGray, extraLighter));
+                    }
+
+                    &[state~="is-active"],
+                    &:disabled {
+                        background: safe-hsla(map-get($colorBlue, default));
+                        border-color: safe-hsla(map-get($colorBlue, default));
+                        color: safe-hsla(map-get($colorWhite, default));
+                    }
+                }
+            }
+        }
+    }
+
+    .info {
+        display: flex;
+        align-items: center;
+        min-height: 2.5rem;
+        background: safe-hsla(map-get($colorGray, extraLighter), 0.25);
+
+        .text {
+            font-size: 0.875rem;
+            line-height: 1;
+            color: safe-hsla(map-get($colorBlack, default));
+            padding: 0 1rem;
+        }
+    }
+}

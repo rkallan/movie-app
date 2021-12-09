@@ -1,0 +1,44 @@
+$colorWhite: (
+    default: hsla(0, 0%, 100%, 1),
+    darken: hsla(0, 0%, 97%, 1),
+);
+
+$colorBlack: (
+    default: hsla(193, 10%, 17%, 1),
+    lighter: hsla(210, 9%, 31%, 1),
+    darken: hsla(0, 0%, 0%, 1),
+    backdrop: hsla(0, 0%, 6%, 0.5),
+    shadow: hsla(0, 0%, 6%, 0.25),
+);
+
+$colorRed: (
+    lighter: hsla(352, 89%, 50%, 1),
+    default: hsla(352, 89%, 40%, 1),
+    darken: hsla(352, 89%, 32%, 1),
+);
+
+$colorGray: (
+    extraLighter: hsla(0, 0, 91, 1),
+    lighter: hsla(80, 2%, 71%, 1),
+    default: hsla(206, 7%, 38%, 1),
+    darken: hsla(0, 0%, 37%, 1),
+    shadow: hsla(0, 0%, 74%, 1),
+);
+
+$colorBlue: (
+    extraLighter: hsla(215, 50%, 97%, 1),
+    lighter: hsla(208, 56%, 46%, 1),
+    default: hsla(199, 100%, 26%, 1),
+    darken: hsla(199, 100%, 16%, 1),
+);
+
+$colorGreen: (
+    lighter: hsla(143, 33%, 90%, 1),
+    default: hsla(143, 47%, 59%, 1),
+    darken: hsla(143, 61%, 41%, 1),
+);
+
+$colorOrange: (
+    lighter: hsla(37, 100%, 90%, 1),
+    default: hsla(37, 100%, 50%, 1),
+);

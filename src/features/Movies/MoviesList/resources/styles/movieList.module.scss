@@ -1,0 +1,29 @@
+@import "./src/resources/styles/variables/variables";
+@import "./src/resources/styles/mixins/mixins";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .unit {
+        position: relative;
+
+        &[variant~="movie-list"] {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: map-get($gap, default);
+
+            .item {
+                min-width: 8rem;
+                max-width: 8rem;
+            }
+
+            .title {
+                font-size: 1.25rem;
+                line-height: 1;
+            }
+        }
+    }
+}

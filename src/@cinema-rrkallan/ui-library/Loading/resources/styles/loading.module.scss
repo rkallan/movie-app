@@ -1,0 +1,37 @@
+@import "./src/resources/styles/mixins/mixins";
+@import "./src/resources/styles/variables/variables";
+
+@keyframes preloader {
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+.container {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    color: safe-hsla(map-get($colorBlue, default));
+    max-height: 100%;
+
+    &[variant~="min-height"] {
+        min-height: 2.25rem;
+    }
+
+    &[variant~="color-inherit"] {
+        color: inherit;
+    }
+
+    .text {
+        font-weight: 700;
+        padding-right: 0.25rem;
+    }
+
+    .dots {
+        border-radius: 100%;
+        border: 0.125rem solid currentColor;
+        margin: 0.375rem 0.25rem 0 0;
+        animation: preloader 0.6s ease-in-out alternate infinite;
+    }
+}

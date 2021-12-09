@@ -1,0 +1,193 @@
+@import "./src/resources/styles/variables/variables";
+@import "./src/resources/styles/mixins/mixins";
+
+.container {
+    display: flex;
+    flex-direction: column;
+
+    .mobileButtonContainer {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        align-self: flex-end;
+        max-height: 1000rem;
+        visibility: visible;
+        opacity: 1;
+        transition: map-get($transition, default);
+        transition-delay: 50ms;
+        top: 0.25rem;
+
+        @include respond-to("medium") {
+            max-height: 0;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .mobileButtonUnit {
+            display: flex;
+            flex-direction: row;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            border-radius: map-get($borderRadius, round);
+            background: transparent;
+
+            .iconContainer {
+                position: relative;
+                width: 1.5rem;
+                height: 1rem;
+                transform: rotate(0deg);
+                transition: 50ms ease-in-out;
+                cursor: pointer;
+
+                .iconUnit {
+                    position: absolute;
+                    display: block;
+                    left: 0;
+                    width: 100%;
+                    height: 0.25rem;
+                    border-radius: 0.25rem;
+                    background: safe-hsla(map-get($colorRed, default));
+                    opacity: 1;
+                    transform: rotate(0deg);
+                    transition: 250ms ease-in-out;
+
+                    &:nth-child(1) {
+                        top: 0;
+                    }
+
+                    &:nth-child(2),
+                    &:nth-child(3) {
+                        top: 0.35rem;
+                    }
+
+                    &:nth-child(4) {
+                        bottom: 0;
+                    }
+                }
+
+                &[state~="is-active"] {
+                    .iconUnit {
+                        &:nth-child(1),
+                        &:nth-child(4) {
+                            top: 0;
+                            width: 0;
+                            left: 0;
+                            opacity: 0;
+                        }
+                        &:nth-child(2) {
+                            transform: rotate(45deg);
+                        }
+                        &:nth-child(3) {
+                            transform: rotate(-45deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .unit {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 0;
+        padding: 1rem;
+        opacity: 0;
+        max-height: 0;
+        top: calc(100% + 1rem);
+        right: -2rem;
+        background-color: safe-hsla(map-get($colorWhite, default));
+        border: 0.0625rem solid safe-hsla(map-get($colorRed, default));
+        border-right: unset;
+        box-shadow: safe-hsla(map-get($colorRed, default), 0.25) 0px 2px 10px;
+        border-radius: map-get($borderRadius, small);
+        border-top-right-radius: unset;
+        border-bottom-right-radius: unset;
+        visibility: hidden;
+        overflow: hidden;
+        transition: map-get($transition, default);
+
+        &[state~="is-active"] {
+            visibility: visible;
+            opacity: 1;
+            max-height: 1000rem;
+        }
+
+        @include respond-to("medium") {
+            position: relative;
+            flex-direction: row;
+            max-height: unset;
+            opacity: 1;
+            padding: 0;
+            right: unset;
+            overflow: unset;
+            visibility: visible;
+            border: unset;
+            box-shadow: unset;
+
+            .item {
+                flex-direction: row;
+                align-items: unset;
+            }
+        }
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            transition: map-get($transition, default);
+            align-items: flex-end;
+
+            .link {
+                display: flex;
+                position: relative;
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: flex-end;
+                color: safe-hsla(map-get($colorRed, default));
+
+                &:after {
+                    display: none;
+                }
+
+                &[variant~="is-active"] {
+                    .text {
+                        &:after {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                &:hover,
+                &:focus {
+                    position: relative;
+
+                    .text {
+                        transform: scale(1.05);
+                        &:after {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                .text {
+                    position: relative;
+                    transition: map-get($transition, default);
+
+                    &:after {
+                        position: absolute;
+                        left: 0;
+                        bottom: -0.125rem;
+                        content: "";
+                        width: 0;
+                        height: 0.0625rem;
+                        transition: map-get($transition, default);
+                        background-color: safe-hsla(map-get($colorRed, default));
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+    }
+}

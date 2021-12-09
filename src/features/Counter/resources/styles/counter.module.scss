@@ -1,0 +1,96 @@
+@import "./src/resources/styles/variables/variables";
+@import "./src/resources/styles/mixins/mixins";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+
+    .unit {
+        display: flex;
+        flex-flow: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        .button {
+            position: relative;
+            min-width: 2rem;
+            height: 2rem;
+            color: safe-hsla(map-get($colorBlue, default));
+            border: 0.0625rem solid safe-hsla(map-get($colorGray, extraLighter));
+            border-radius: map-get($borderRadius, small);
+            background: safe-hsla(map-get($colorGray, extraLighter));
+            transition: map-get($transition, default);
+
+            &:hover,
+            &:focus {
+                background: safe-hsla(map-get($colorWhite, default));
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
+
+            &[variant~="async"] {
+                position: relative;
+
+                &:after {
+                    content: "";
+                    background-color: rgba(112, 76, 182, 0.15);
+                    display: block;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    opacity: 0;
+                    transition: width 1s linear, opacity 0.5s ease 1s;
+                }
+
+                &:active {
+                    background: safe-hsla(map-get($colorGray, extraLighter));
+
+                    &:after {
+                        width: 0%;
+                        opacity: 1;
+                        transition: 0s;
+                    }
+                }
+            }
+        }
+
+        .output {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .input {
+            margin: 0;
+            padding: 0.375rem 0.5rem;
+            border: 0.0625rem solid safe-hsla(map-get($colorGray, lighter));
+            border-radius: map-get($borderRadius, small);
+            font-size: 1rem;
+            line-height: 1;
+            font-weight: 400;
+            color: safe-hsla(map-get($colorBlack, lighter));
+            background: transparent;
+            -moz-appearance: textfield;
+
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+            &:disabled {
+                color: safe-hsla(map-get($colorBlack, lighter), map-get($opacity, disabled));
+            }
+        }
+    }
+}

@@ -1,0 +1,60 @@
+@import "./src/resources/styles/mixins/mixins";
+@import "./src/resources/styles/variables/variables";
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    justify-content: center;
+    color: safe-hsla(map-get($colorWhite, default));
+    border: 0.125rem solid safe-hsla(map-get($colorRed, default));
+    border-radius: map-get($borderRadius, medium);
+    margin: 0;
+    padding: map-get($gap, extraSmall) map-get($gap, small);
+    cursor: pointer;
+    background: safe-hsla(map-get($colorRed, default));
+    transition: map-get($transition, default);
+
+    &:hover:not([disabled]),
+    &:focus:not([disabled]) {
+        color: safe-hsla(map-get($colorRed, default));
+        background: safe-hsla(map-get($colorWhite, default));
+
+        .unit {
+            * {
+                color: safe-hsla(map-get($colorRed, default));
+                transition: map-get($transition, default);
+                animation-delay: 3000ms;
+            }
+        }
+    }
+
+    &:disabled {
+        opacity: map-get($opacity, disabled);
+        cursor: unset;
+    }
+
+    .unit {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: map-get($gap, small);
+        width: 100%;
+        overflow: hidden;
+        transition: map-get($transition, default);
+
+        * {
+            color: safe-hsla(map-get($colorWhite, default));
+            transition: map-get($transition, default);
+        }
+
+        &[variant~="loading"] {
+            display: none;
+            visibility: hidden;
+            max-height: 0;
+        }
+    }
+}

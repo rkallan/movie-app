@@ -1,0 +1,14 @@
+[
+    {
+        "id": 10,
+        "title": "Movies featured",
+        "url": "/movies/featured",
+        "exact": true
+    },
+    {
+        "id": 20,
+        "title": "Movies search",
+        "url": "/movies/search",
+        "exact": true
+    }
+]

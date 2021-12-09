@@ -1,0 +1,144 @@
+@import "./src/resources/styles/variables/variables";
+@import "./src/resources/styles/mixins/mixins";
+
+.container {
+    &[variant="margin-right"] {
+        margin-right: 0.5rem;
+    }
+
+    .checkbox {
+        position: absolute;
+        width: 0;
+        height: 0;
+        color: safe-hsla(map-get($colorWhite, default));
+        visibility: hidden;
+
+        &:checked + .sliderButton {
+            .unit {
+                background: safe-hsla(map-get($colorGreen, darken));
+
+                .circle {
+                    left: calc(100% - 1.25rem);
+                }
+
+                .content {
+                    &[variant="left"] {
+                        opacity: map-get($opacity, show);
+                    }
+                    &[variant="right"] {
+                        opacity: map-get($opacity, hidden);
+                    }
+                }
+            }
+        }
+
+        &:focus + .sliderButton {
+            .unit {
+                .circle {
+                    background: safe-hsla(map-get($colorBlack, lighter));
+                }
+            }
+        }
+
+        &:disabled + .sliderButton,
+        &[readonly] + .sliderButton {
+            pointer-events: none;
+
+            .unit {
+                cursor: unset;
+            }
+        }
+
+        &:disabled + .sliderButton {
+            .unit {
+                opacity: map-get($opacity, disabled);
+            }
+        }
+    }
+
+    .sliderButton {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        border: none;
+        background-color: transparent;
+
+        &:hover,
+        &:focus {
+            .unit {
+                .circle {
+                    background: safe-hsla(map-get($colorBlack, lighter));
+                }
+            }
+        }
+
+        .labelText {
+            text-transform: uppercase;
+            margin-right: 0.5rem;
+        }
+    }
+
+    .unit {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 3rem;
+        height: 1.5rem;
+        border-radius: 1rem;
+        align-items: center;
+        background: scale-color(map-get($colorGray, lighter), $lightness: 40%);
+        transition: map-get($transition, default);
+
+        .circle {
+            position: absolute;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 100%;
+            background: white;
+            top: 0.25rem;
+            left: 0.3rem;
+            transition: map-get($transition, default);
+        }
+
+        .content {
+            display: flex;
+            flex-direction: row;
+            text-align: left;
+            height: 2rem;
+            max-height: 2rem;
+            margin: 0 2.25rem 0 0.75rem;
+            opacity: map-get($opacity, hidden);
+            transition: map-get($transition, default);
+            align-items: center;
+            overflow: hidden;
+
+            .text {
+                line-height: 1.7rem;
+            }
+
+            .icon {
+                width: 1.825rem;
+                height: 1.25rem;
+                margin: 0 0.25rem 0 0;
+            }
+
+            &[variant="right"] {
+                margin: -2rem 0.75rem 0 2.1rem;
+                opacity: map-get($opacity, show);
+                align-self: flex-end;
+                color: safe-hsla(map-get($colorGray, default));
+
+                .icon {
+                    margin: 0 0 0 0.25rem;
+                }
+            }
+
+            svg {
+                align-self: center;
+            }
+        }
+    }
+}

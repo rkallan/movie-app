@@ -1,0 +1,9 @@
+@import "./src/resources/styles/variables/variables";
+@import "./src/resources/styles/mixins/mixins";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2rem;
+}

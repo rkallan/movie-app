@@ -1,0 +1,11 @@
+$transitionTime: (
+    slow: 450,
+    default: 300,
+    fast: 150,
+);
+
+$transition: (
+    slow: all #{map-get($transitionTime, slow)}ms ease-in-out,
+    default: all #{map-get($transitionTime, default)}ms ease-in-out,
+    fast: all #{map-get($transitionTime, fast)}ms ease-in-out,
+);

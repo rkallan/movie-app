@@ -1,0 +1,42 @@
+@import "./src/resources/styles/variables/variables";
+@import "./src/resources/styles/mixins/mixins";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .unit {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: map-get($gap, default);
+
+        .image {
+            margin: 0;
+            padding: 0;
+            min-width: 16rem;
+        }
+
+        .content {
+            .info {
+                display: flex;
+                flex-direction: row;
+                gap: 0.5rem;
+
+                .label {
+                    font-weight: bold;
+                }
+
+                .list {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.5rem;
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                }
+            }
+        }
+    }
+}

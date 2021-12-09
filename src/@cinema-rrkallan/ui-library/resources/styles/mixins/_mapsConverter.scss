@@ -1,0 +1,37 @@
+@mixin propValueFromMaps($map) {
+    @if type-of($map) == "map" {
+        @each $property, $value in $map {
+            @if str-slice($property, 1, 1) != "_" {
+                #{$property}: $value;
+            } @else if str-slice($property, 1, 1) == "_" {
+                @if type-of(map-get($map, $property)) == "map" {
+                    $selector: str-slice($property, 2);
+                    @if $selector == "hover" {
+                        $selector: "&:#{str-slice($property, 2)}, &:focus";
+                    }
+                    @if $selector == "after" {
+                        $selector: "&:#{str-slice($property, 2)}";
+                    }
+                    @if $selector == "hoverAfter" {
+                        $selector: "&:hover:after}";
+                    }
+
+                    #{$selector} {
+                        @each $propHover, $valueHover in map-get($map, $property) {
+                            @if str-slice($propHover, 1, 1) == "_" {
+                                $selector2: str-slice($propHover, 2);
+                                @if $selector2 == "after" {
+                                    $selector2: "&:#{str-slice($propHover, 2)}";
+                                }
+                            }
+
+                            #{$propHover}: $valueHover;
+                        }
+                    }
+                }
+            }
+        }
+    } @else {
+        @warn "Unfortunately, `#{$map}` is not a SASS map. ";
+    }
+}
